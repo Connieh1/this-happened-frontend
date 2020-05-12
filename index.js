@@ -1,5 +1,3 @@
-console.log("in index.js")
-
 const endPoint = "http://localhost:3000/api/v1/posts"
 
 document.addEventListener('DOMContentLoaded', () =>{
@@ -17,7 +15,7 @@ function getPosts(){
             <p>${post.attributes.subject.name}</p>
             <button data-id=${post.id}>edit</button>
           </div>
-          <br><br>`;
+          <br>`;
 
           document.querySelector('#post-container').innerHTML += postMarkup
         })
