@@ -1,8 +1,19 @@
 const endPoint = "http://localhost:3000/api/v1/posts"
+const url = 'http://localhost:3000/api/v1/subjects'
+
+
 
 document.addEventListener('DOMContentLoaded', () =>{
   getPosts()
 })
+
+document.addEventListener('DOMContentLoaded', () =>{
+  populateSelection()
+})
+// document.addEventListener('DOMContentLoaded', () =>{
+//   getSubjects()
+// })
+
 
 function getPosts(){
   fetch(endPoint)
@@ -21,4 +32,22 @@ function getPosts(){
         })
 
       })
+}
+
+
+// -----
+
+function populateSelection(){
+  fetch(url).then(resp => resp.json())
+  .then(data =>{
+    let subjectSelection = document.getElementById('subjects');
+    data.data.forEach(subject => {
+      console.log(subject);
+      let option = document.createElement("option");
+      option.setAttribute("text", subject.attributes.name)
+      option.setAttribute("value", subject.id);
+      option.innerHTML = subject.attributes.name;
+      subjectSelection.appendChild(option)
+    });
+  });
 }
