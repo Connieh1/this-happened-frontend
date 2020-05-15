@@ -10,9 +10,6 @@ document.addEventListener('DOMContentLoaded', () =>{
 document.addEventListener('DOMContentLoaded', () =>{
   populateSelection()
 })
-// document.addEventListener('DOMContentLoaded', () =>{
-//   getSubjects()
-// })
 
 
 function getPosts(){
