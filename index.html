@@ -7,17 +7,18 @@
   </head>
   <body>
 
-    <div class="create-post-form">
+    <div class="form-container">
 
       <form id='create-post-form'>
-      <h3>This Happened</h3>
+      <h3>This Happened!</h3>
+
+      <p>Select A Category</p>
+      <select id='subjects' name="subjects"></select>
+      <br><br>
 
       <input id='input-title' type="text"  name="title" value="" placeholder="Enter title here">
       <br>
       <textarea id='input-description' name="description" placeholder="What Happened?" rows="8" cols="80"></textarea>
-      <br><br>
-
-      <select id='subjects' name="subjects"></select>
       <br><br>
 
       <input id='create-button' type="submit" name="submit" value="Submit" class='submit'>
