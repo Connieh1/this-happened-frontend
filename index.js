@@ -6,16 +6,11 @@ document.addEventListener('DOMContentLoaded', () =>{
   const createSyllabusForm = document.querySelector("#create-post-form");
 
   createSyllabusForm.addEventListener("submit", (e) => createFormHandler(e))
-
 })
-
 
 document.addEventListener('DOMContentLoaded', () =>{
   populateSelection()
 })
-
-
-
 
 
 function getPosts(){
@@ -23,20 +18,22 @@ function getPosts(){
   .then(response => response.json())
   .then(posts => {
     posts.data.forEach(post =>{
-      const postMarkup = `
-          <div data-id=${post.id}>
-            <h3>${post.attributes.title}</h3>
-            <p>${post.attributes.subject.name}</p>
-            <button data-id=${post.id}>edit</button>
-          </div>
-          <br>`;
-
-          document.querySelector('#post-container').innerHTML += postMarkup
+    render(post)
         })
-
       })
 }
 
+function render(post){
+  const postMarkup = `
+      <div data-id=${post.id}>
+        <h3>${post.attributes.title}</h3>
+        <p>${post.attributes.subject.name}</p>
+        <button data-id=${post.id}>edit</button>
+      </div>
+      <br>`;
+
+      document.querySelector('#post-container').innerHTML += postMarkup
+}
 
 // -----
 
