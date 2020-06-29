@@ -6,13 +6,15 @@ document.addEventListener('DOMContentLoaded', () =>{
 
   const createSyllabusForm = document.querySelector("#create-post-form");
 
+  populateSelection()
+
   createSyllabusForm.addEventListener("submit", (e) => createFormHandler(e))
 
 })
 
-document.addEventListener('DOMContentLoaded', () =>{
-  populateSelection()
-})
+// document.addEventListener('DOMContentLoaded', () =>{
+//   populateSelection()
+// })
 
 function getPosts(){
   fetch(endPoint)
