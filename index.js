@@ -5,14 +5,15 @@ document.addEventListener('DOMContentLoaded', () =>{
 
   const createPostForm = document.querySelector("#create-post-form");
 
-  createPostForm.addEventListener("submit", (e) => createFormHandler(e))
-
-})
-
-
-document.addEventListener('DOMContentLoaded', () =>{
   populateSelection()
+
+  createPostForm.addEventListener("submit", (e) => createFormHandler(e))
 })
+
+
+// document.addEventListener('DOMContentLoaded', () =>{
+//   populateSelection()
+// })
 
 
 
@@ -25,8 +26,9 @@ function getPosts(){
     posts.data.forEach(post =>{
       const postMarkup = `
           <div data-id=${post.id}>
-            <h3>${post.attributes.title}</h3>
             <p>${post.attributes.subject.name}</p>
+            <h3>${post.attributes.title}</h3>
+            <p>${post.attributes.description}</p>
             <button data-id=${post.id}>edit</button>
           </div>
           <br>`;
