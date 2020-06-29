@@ -1,59 +1,31 @@
+
 const endPoint = "http://localhost:3000/api/v1/posts"
 
 document.addEventListener('DOMContentLoaded', () =>{
   getPosts()
 
-  const createPostForm = document.querySelector("#create-post-form");
+  const createSyllabusForm = document.querySelector("#create-post-form");
 
-  populateSelection()
+  createSyllabusForm.addEventListener("submit", (e) => createFormHandler(e))
 
-  createPostForm.addEventListener("submit", (e) => createFormHandler(e))
 })
-
-
-// document.addEventListener('DOMContentLoaded', () =>{
-//   populateSelection()
-// })
 
 document.addEventListener('DOMContentLoaded', () =>{
   populateSelection()
 })
-
 
 function getPosts(){
   fetch(endPoint)
   .then(response => response.json())
   .then(posts => {
     posts.data.forEach(post =>{
+      let newPost = new Post(post, post.attributes)
 
-      const postMarkup = `
-          <div data-id=${post.id}>
-            <p>${post.attributes.subject.name}</p>
-            <h3>${post.attributes.title}</h3>
-            <p>${post.attributes.description}</p>
-            <button data-id=${post.id}>edit</button>
-          </div>
-          <br>`;
-
-          document.querySelector('#post-container').innerHTML += postMarkup
-    
-      render(post)
+      document.querySelector('#post-container').innerHTML += newPost.renderPostCard();
         })
       })
 }
 
-function render(post){
-  const postMarkup = `
-      <div data-id=${post.id}>
-        <p>${post.attributes.subject.name}</p>
-        <h3>${post.attributes.title}</h3>
-        <p>${post.attributes.description}</p>
-        <button data-id=${post.id}>edit</button>
-      </div>
-      <br>`;
-
-      document.querySelector('#post-container').innerHTML += postMarkup
-}
 
 // -----
 
@@ -94,16 +66,9 @@ function postFetch(title, description, subject_id){
   })
   .then(response => response.json())
   .then(post => {
-    const postData = post.data.attributes
-    const postMarkup =`
-    <div data-id=${post.id}>
-    <h3>${postData.title}</h3>
-    <p>${postData.subject.name}</p>
-    <p>${postData.description}</p>
-    <button data-id=${postData.id}>edit</button>
-    </div>
-    <br>`;
+    const postData = post.data
+    let newPost = new Post(postData, postData.attributes)
 
-    document.querySelector('#post-container').innerHTML += postMarkup;
+    document.querySelector('#post-container').innerHTML += newPost.renderPostCard();
   })
 }
