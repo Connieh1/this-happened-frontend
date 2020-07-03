@@ -5,34 +5,32 @@ document.addEventListener('DOMContentLoaded', () =>{
 
   const createPostForm = document.querySelector("#create-post-form");
 
-  populateSelection()
-
   createPostForm.addEventListener("submit", (e) => createFormHandler(e))
 })
 
+document.addEventListener('DOMContentLoaded', () =>{
+  populateSelection()
+})
 
 function getPosts(){
   fetch(endPoint)
   .then(response => response.json())
   .then(posts => {
     posts.data.forEach(post =>{
-      render(post)
-    })
-  })
+      const postMarkup = `
+          <div data-id=${post.id}>
+            <h3>${post.attributes.title}</h3>
+            <p>${post.attributes.subject.name}</p>
+            <button data-id=${post.id}>edit</button>
+          </div>
+          <br>`;
+
+          document.querySelector('#post-container').innerHTML += postMarkup
+        })
+
+      })
 }
 
-function render(post){
-  const postMarkup = `
-      <div data-id=${post.id}>
-        <p>${post.attributes.subject.name}</p>
-        <h3>${post.attributes.title}</h3>
-        <p>${post.attributes.description}</p>
-        <button data-id=${post.id}>edit</button>
-      </div>
-      <br>`;
-
-      document.querySelector('#post-container').innerHTML += postMarkup
-}
 
 // -----
 
@@ -73,7 +71,15 @@ function postFetch(title, description, subject_id){
   })
   .then(response => response.json())
   .then(post => {
-    const postData = post.data
-    render(postData)
+    const postData = post.data.attributes
+    const postMarkup =`
+    <div data-id=${post.id}>
+    <h3>${postData.title}</h3>
+    <p>${postData.subject.name}</p>
+    <button data-id=${postData.id}>edit</button>
+    </div>
+    <br>`;
+
+    document.querySelector('#post-container').innerHTML += postMarkup;
   })
 }
