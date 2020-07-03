@@ -19,8 +19,9 @@ function getPosts(){
     posts.data.forEach(post =>{
       const postMarkup = `
           <div data-id=${post.id}>
+          <p>${post.attributes.subject.name}</p>
             <h3>${post.attributes.title}</h3>
-            <p>${post.attributes.subject.name}</p>
+            <p>${post.attributes.description}</p>
             <button data-id=${post.id}>edit</button>
           </div>
           <br>`;
