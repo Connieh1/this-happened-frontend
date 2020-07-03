@@ -4,17 +4,14 @@ const endPoint = "http://localhost:3000/api/v1/posts"
 document.addEventListener('DOMContentLoaded', () =>{
   getPosts()
 
-  const createSyllabusForm = document.querySelector("#create-post-form");
+  const createPostForm = document.querySelector("#create-post-form")
+    populateSelection()
 
-  populateSelection()
+  createPostForm.addEventListener("submit", (e) => createFormHandler(e));
+  });
 
-  createSyllabusForm.addEventListener("submit", (e) => createFormHandler(e))
 
-})
 
-// document.addEventListener('DOMContentLoaded', () =>{
-//   populateSelection()
-// })
 
 function getPosts(){
   fetch(endPoint)
@@ -26,6 +23,7 @@ function getPosts(){
       document.querySelector('#post-container').innerHTML += newPost.renderPostCard();
         })
       })
+
 }
 
 
