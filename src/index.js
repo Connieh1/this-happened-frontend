@@ -4,12 +4,18 @@ const endPoint = "http://localhost:3000/api/v1/posts"
 document.addEventListener('DOMContentLoaded', () =>{
   getPosts()
 
-  const createPostForm = document.querySelector("#create-post-form")
+  const createPostForm = document.querySelector("#create-post-form");
     populateSelection()
 
   createPostForm.addEventListener("submit", (e) => createFormHandler(e));
-  });
 
+  const postContainer = document.querySelector('#post-container');
+
+  postContainer.addEventListener('click', e => {
+    console.log('clicked');
+
+  });
+})
 
 
 
@@ -71,4 +77,4 @@ function postFetch(title, description, subject_id){
 
     document.querySelector('#post-container').innerHTML += newPost.renderPostCard();
   })
-}
+  }

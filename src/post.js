@@ -20,6 +20,10 @@ class Post{
     <br>`;
   }
 
+  static findById(id) {
+      return this.all.find(post => post.id === id);
+    }
+
 }
 
 Post.all = [];
