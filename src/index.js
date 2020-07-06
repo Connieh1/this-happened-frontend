@@ -5,19 +5,19 @@ document.addEventListener('DOMContentLoaded', () =>{
   getPosts()
 
   const createPostForm = document.querySelector("#create-post-form");
-    populateSelection()
+    populateSelection();
 
   createPostForm.addEventListener("submit", (e) => createFormHandler(e));
 
   const postContainer = document.querySelector('#post-container');
 
   postContainer.addEventListener('click', e => {
-    console.log('clicked');
-
+    const id = (e.target.dataset.id);
+    const post = (Post.findById(id));
+    document.querySelector('#edit-post').innerHTML = post.renderUpdateForm();
+    populateSelection();
   });
 })
-
-
 
 function getPosts(){
   fetch(endPoint)
