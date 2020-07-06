@@ -15,7 +15,6 @@ class Post{
       <p>${this.subject.name}</p>
       <h3>${this.title}</h3>
       <p>${this.description}</p>
-      <button data-id=${this.id}>edit</button>
     </div>
     <br>`;
   }
