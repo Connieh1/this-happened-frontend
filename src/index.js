@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () =>{
   const postContainer = document.querySelector('#post-container');
 
   postContainer.addEventListener('click', e => {
-    const id = (e.target.dataset.id);
+    const id = parseInt(e.target.dataset.id);
     const post = (Post.findById(id));
     document.querySelector('#edit-post').innerHTML = post.renderUpdateForm();
     populateSelection();

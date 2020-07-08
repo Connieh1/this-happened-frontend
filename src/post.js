@@ -38,7 +38,7 @@ class Post{
       <input id='input-title' type="text" name="title" value="${this.title}" class="input-text">
       <br><br>
 
-      <label>Description</label>
+    
       <textarea id='input-description' name="description" rows="8" cols="80" value="">${this.description}</textarea>
       <br><br>
 
