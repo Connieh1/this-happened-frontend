@@ -23,7 +23,6 @@ function getPosts(){
       document.querySelector('#post-container').innerHTML += newPost.renderPostCard();
         })
       })
-
 }
 
 
