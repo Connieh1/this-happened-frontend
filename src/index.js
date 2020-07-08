@@ -27,6 +27,7 @@ function getPosts(){
       let newPost = new Post(post, post.attributes)
 
       document.querySelector('#post-container').innerHTML += newPost.renderPostCard();
+        populateSelection()
         })
       })
 

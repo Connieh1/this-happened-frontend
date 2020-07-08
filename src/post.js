@@ -21,7 +21,7 @@ class Post{
   }
 
   static findById(id) {
-      return this.all.find(post => post.id === id);
+      return this.all.find(post => post.id == id);
     }
 
     renderUpdateForm() {
@@ -42,7 +42,7 @@ class Post{
       <textarea id='input-description' name="description" rows="8" cols="80" value="">${this.description}</textarea>
       <br><br>
 
-      <input id='edit-button' type="submit" name="submit" value="Edit Post" class="submit">
+      <input id='edit-button' data-id=${this.id} data-title=${this.title} type="submit" name="submit" value="Edit Post" class="submit">
     </form>
   `;
   }
