@@ -2,6 +2,7 @@
 const endPoint = "http://localhost:3000/api/v1/posts"
 
 document.addEventListener('DOMContentLoaded', () =>{
+  console.log('loaded')
   getPosts()
 
   const createPostForm = document.querySelector("#create-post-form")
