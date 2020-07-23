@@ -24,6 +24,18 @@ class Post{
         </div>
       </div>`
 
+      return `
+
+      <div class="post-post" >
+        <h2 class="post-post-title">${this.title}</h2>
+        <p class="post-post-meta">December 23, 2013 by <a href="#">Jacob</a></p>
+        <p>${this.subject}</p>
+        <blockquote>
+          <p>${this.description}</p>
+        </blockquote>
+      </div><!-- /.post-post -->
+      `
+
 
     // return `
     // <div data-id=${this.id}>
