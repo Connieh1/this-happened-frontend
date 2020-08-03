@@ -32,7 +32,6 @@ function getPosts(){
       })
 }
 
-
 // -----
 
 function populateSelection(){

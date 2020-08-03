@@ -12,8 +12,6 @@ document.addEventListener('DOMContentLoaded', () =>{
   });
 
 
-
-
 function getPosts(){
   fetch(endPoint)
   .then(response => response.json())
@@ -22,8 +20,8 @@ function getPosts(){
       let newPost = new Post(post, post.attributes)
 
       document.querySelector('#post-container').innerHTML += newPost.renderPostCard();
-        })
-      })
+    })
+  })
 }
 
 // -----Subject Select Box----- //

@@ -1,5 +1,3 @@
-
-
 class Post{
 
   constructor(post, postAttributes){
@@ -10,7 +8,6 @@ class Post{
     this.subject = postAttributes.subject;
     this.time = postAttributes.subject.created_at;
     Post.all.push(this);
-
   }
 
 
@@ -40,15 +37,6 @@ class Post{
         </blockquote>
       </div><!-- /.post-post -->
       `
-
-
-    // return `
-    // <div data-id=${this.id}>
-    //   <p>${this.subject.name}</p>
-    //   <h3>${this.title}</h3>
-    //   <p>${this.description}</p>
-    // </div>
-    // <br>`;
   }
 
 }
