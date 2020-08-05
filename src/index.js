@@ -1,5 +1,6 @@
 
 const endPoint = "http://localhost:3000/api/v1/posts"
+//put in .env
 
 document.addEventListener('DOMContentLoaded', () =>{
   console.log('loaded')
@@ -11,15 +12,18 @@ document.addEventListener('DOMContentLoaded', () =>{
   createPostForm.addEventListener("submit", (e) => createFormHandler(e));
   });
 
-
 function getPosts(){
   fetch(endPoint)
   .then(response => response.json())
   .then(posts => {
-    posts.data.forEach(post =>{
+    posts.data.sort(function(a,b) {
+    var x = a.attributes.title.toLowerCase();
+    var y = b.attributes.title.toLowerCase();
+    return x < y ? -1 : x > y ? 1 : 0;
+    }).
+    forEach(post =>{
       let newPost = new Post(post, post.attributes)
-
-      document.querySelector('#post-container').innerHTML += newPost.renderPostCard();
+    document.querySelector('#post-container').innerHTML += newPost.renderPostCard();
     })
   })
 }
@@ -50,22 +54,26 @@ function createFormHandler(e){
   postFetch(titleInput, descriptionInput, subjectId)
 }
 
-function postFetch(title, description, subject_id){
+function postFetch(title, description, subjectId){
   fetch(endPoint, {
-    //Post request
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({
       title: title,
       description: description,
-      subject_id: subject_id
+      subject_id: subjectId
     })
   })
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok){
+      throw new Error(response)
+    }
+    return response.json()
+  })
   .then(post => {
     const postData = post.data
     let newPost = new Post(postData, postData.attributes)
 
     document.querySelector('#post-container').innerHTML += newPost.renderPostCard();
-  })
+  }).catch(err => alert("message"));
 }
