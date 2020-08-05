@@ -6,7 +6,7 @@ class Post{
     this.title = postAttributes.title;
     this.description = postAttributes.description;
     this.subject = postAttributes.subject;
-    this.time = postAttributes.subject.created_at;
+    this.created_at = postAttributes.subject.created_at;
     Post.all.push(this);
   }
 
@@ -16,7 +16,7 @@ class Post{
     <div class="col-md-6">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
-        <small class="d-inline-block mb-2">${(this.time)}</small>
+        <small class="d-inline-block mb-2">${(this.created_at)}</small>
           <strong class="d-inline-block mb-2 text-primary">${this.subject.name}</strong>
           <h3 class="mb-0">${this.title}</h3>
           <p class="card-text mb-auto">${this.description}</p>
