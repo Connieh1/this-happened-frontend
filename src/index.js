@@ -17,8 +17,8 @@ function getPosts(){
   .then(response => response.json())
   .then(posts => {
     posts.data.sort(function(a,b) {
-    var x = a.attributes.title.toLowerCase();
-    var y = b.attributes.title.toLowerCase();
+    let x = a.attributes.title.toLowerCase();
+    let y = b.attributes.title.toLowerCase();
     return x < y ? -1 : x > y ? 1 : 0;
     }).
     forEach(post =>{
