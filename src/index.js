@@ -1,4 +1,4 @@
-const endPoint = "http://localhost:3000/api/v1/posts";
+const endPoint = "https://this-happened-backend.herokuapp.com/api/v1/posts";
 //put in .env
 
 document.addEventListener("DOMContentLoaded", () => {

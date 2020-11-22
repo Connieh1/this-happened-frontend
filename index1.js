@@ -1,4 +1,4 @@
-const endPoint = "https://this-happened-backend.herokuapp.com/api/v1/posts";
+const endPoint = "https://localhost:3000/api/v1/posts";
 
 document.addEventListener("DOMContentLoaded", () => {
   getPosts();
@@ -16,8 +16,14 @@ function getPosts() {
   fetch(endPoint)
     .then((response) => response.json())
     .then((posts) => {
-      posts.data.forEach((post) => {
-        const postMarkup = `
+      posts.dataposts.data
+        .sort(function (a, b) {
+          let x = a.attributes.title.toLowerCase();
+          let y = b.attributes.title.toLowerCase();
+          return x < y ? -1 : x > y ? 1 : 0;
+        })
+        .forEach((post) => {
+          const postMarkup = `
           <div data-id=${post.id}>
           <p>${post.attributes.subject.name}</p>
             <h3>${post.attributes.title}</h3>
@@ -26,15 +32,15 @@ function getPosts() {
           </div>
           <br>`;
 
-        document.querySelector("#post-container").innerHTML += postMarkup;
-      });
+          document.querySelector("#post-container").innerHTML += postMarkup;
+        });
     });
 }
 
 // -----
 
 function populateSelection() {
-  const url = "https://this-happened-backend.herokuapp.com/api/v1/subjects";
+  const url = "https://localhost:3000/api/v1/subjects";
 
   fetch(url)
     .then((resp) => resp.json())
