@@ -34,7 +34,7 @@ function getPosts() {
 // -----
 
 function populateSelection() {
-  const url = "http://localhost:3000/api/v1/subjects";
+  const url = "https://this-happened-backend.herokuapp.com/api/v1/subjects";
 
   fetch(url)
     .then((resp) => resp.json())
