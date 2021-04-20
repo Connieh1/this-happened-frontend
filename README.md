@@ -2,9 +2,14 @@
 
 > HTML/JavaScript Frontend of basic memo application
 
-## URL
+## URLs
 
 https://this-happened.netlify.app/
+
+## Backend
+
+https://this-happened-backend.herokuapp.com/api/v1/posts
+https://this-happened-backend.herokuapp.com/api/v1/subjects
 
 ## Installation
 
